@@ -10,6 +10,7 @@ kernel_dtstree(
             "qcom/**/*.dts",
             "qcom/**/Kbuild",
             "qcom/**/*.mk",
+            "qcom/**/bindings/**",
             "bindings/**/*",
         ],
         exclude = [
@@ -18,6 +19,10 @@ kernel_dtstree(
             "**/*.bazel",
             "**/*.bzl",
         ],
-    ),
+    ) + [
+        "//vendor/qcom/sm8650-modules/qcom/opensource/audio-kernel:audio_dt_bindings",
+        "//vendor/qcom/sm8650-modules/qcom/opensource/camera-kernel:camera_dt_bindings",
+        "//vendor/qcom/sm8650-modules/qcom/opensource/synx-kernel:synx_dt_bindings",
+    ],
     visibility = ["//visibility:public"],
 )
