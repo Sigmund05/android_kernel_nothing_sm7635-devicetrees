@@ -84,6 +84,11 @@
 		qcom,vdd-wlan-rfa1-config = <1856000 2100000 0 0 1>;
 		vdd-wlan-rfa2-supply = <&S2B>;
 		qcom,vdd-wlan-rfa2-config = <1350000 2100000 0 0 1>;
+
+		/* PMIC reg & regulator for XOCAL purpose */
+		nvmem-cells = <&xo_calib_data>;
+		nvmem-cell-names = "xo_calib_reg";
+		wcal-pbs-supply = <&WCAL_PBS>;
 	};
 };
 

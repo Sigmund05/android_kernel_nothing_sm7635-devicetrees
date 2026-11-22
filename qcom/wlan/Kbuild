@@ -100,6 +100,8 @@ ifeq ($(CONFIG_ARCH_NEO),y)
 dtbo-y += neo-kiwi-cnss.dtbo
 dtbo-y += neo_luna-v2-kiwi-cnss.dtbo
 dtbo-y += neo-le-kiwi-cnss.dtbo
+dtbo-y += neo-aliso-sg-kiwi-cnss.dtbo
+dtbo-y += neo-aliso-sg2-kiwi-cnss.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_ANORAK),y)

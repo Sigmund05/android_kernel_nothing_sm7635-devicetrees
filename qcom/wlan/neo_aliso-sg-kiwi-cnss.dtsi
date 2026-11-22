@@ -1,0 +1,7 @@
+#include "neo_aliso-sg2-kiwi-cnss.dtsi"
+
+
+&wlan_kiwi {
+	vdd-wlan-supply = <&S9A>;
+	qcom,vdd-wlan-config = <1000000 1004000 0 0 1>;
+};
