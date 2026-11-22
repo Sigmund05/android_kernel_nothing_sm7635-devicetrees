@@ -17,10 +17,13 @@
 
 	aliases {
 		hsuart0 = &qupv3_se17_4uart;
+		i2c11 = &qupv3_se11_i2c;
+		spi16 = &qupv3_se16_spi;
+
 	};
 
 	chosen {
-		bootargs = "nokaslr log_buf_len=1M ufshcd-core.use_mcq_mode=n";
+		bootargs = "nokaslr log_buf_len=1M ufshcd-core.use_mcq_mode=n pcie_pme=nomsi";
 	};
 
 	reserved_memory: reserved-memory {
@@ -327,6 +330,10 @@
 		qcom,dev-name = "bootloader_a";
 	};
 
+	virtio_blk_la_gvminfo {
+		qcom,dev-name = "gvminfo";
+	};
+
 	vm_config: qcom,vm-config {
 		compatible = "qcom,vm-1.0";
 		vm-type = "aarch64-guest";
@@ -337,7 +344,7 @@
 		vendor = "QTI";
 		image-name = "qcom,autoghgvm";
 		qcom,pasid = <0x0 0x2c>;
-		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,159,199,47E,7F1,10C;ta=keymaster64,widevine,pr_3_0,she_gvm,auto_test_a,auto_test_b,auto_test_c,auto_test_d,auto_test_e,auto_test_f,auto_test_g,auto_test_h,auto_test_i,auto_test_j,auto_test_k,auto_test_l,auto_test_m,auto_test_n,auto_test_o,auto_test_p,auto_test_320,auto_test_321,auto_test_322,auto_test_323,auto_test_324,apttestapp,apttestapp64,aptcryptotestapp,aptcryptotestapp64,smplserv,tzecotestapp,tzecotestappcbo1,smci_auto_test_1,smci_auto_test_2,smci_auto_test_3,smci_auto_test_4,smci_auto_test_5,smci_auto_test_6,smci_auto_test_7,smci_auto_test_8,smci_auto_test_9,smci_auto_test_10,smci_auto_test_11,smci_auto_test_12,smci_auto_test_13,smci_auto_test_14,smci_auto_test_15,smci_auto_test_16,smci_auto_test_init_crash,smci_auto_test_restartable,smci_auto_test_shutdown_crash,fsp_test_1,fsp_test_2,fsp_test_3,bintestapp64,tzecotestapp1,crypto_testapp,sst_testapp,autosst_testapp,auto_test_unpermitted,FD02C9DA-306C-48C7-A49C-BBD827AE86EE,5AF8C3E6-D9DF-446E-4FF2-D4D58E8CA49B,19CE19B9-FD73-4262-8553-E5CAC40C895A,C02CAC07-2639-4EF0-BC12-C4AF1FB3E276,15C6B6E4-D083-48E4-8744-4D90A8FF1EF2,CAD10542-34E4-452D-6156-E979AA6E61BC,23914957-C174-4EA6-54D1-DA820F77B4B0,5AF8C3E6-D9DF-446E-4FF2-C3C47D7B938A,CAD10542-34E4-452D-6156-E979AA6E6132,5AF8C3E6-D9DF-446E-4FF2-B2B36C6A8279,smplap32,smplap64;";
+		qcom,qtee-config-info = "p=3,16,57,77,78,7A,7C,8F,97,159,199,47E,7F1,10C;ta=keymaster64,widevine,pr_3_0,she_gvm,auto_test_a,auto_test_b,auto_test_c,auto_test_d,auto_test_e,auto_test_f,auto_test_g,auto_test_h,auto_test_i,auto_test_j,auto_test_k,auto_test_l,auto_test_m,auto_test_n,auto_test_o,auto_test_p,auto_test_320,auto_test_321,auto_test_322,auto_test_323,auto_test_324,apttestapp,apttestapp64,aptcryptotestapp,aptcryptotestapp64,smplserv,tzecotestapp,tzecotestappcbo1,smci_auto_test_1,smci_auto_test_2,smci_auto_test_3,smci_auto_test_4,smci_auto_test_5,smci_auto_test_6,smci_auto_test_7,smci_auto_test_8,smci_auto_test_9,smci_auto_test_10,smci_auto_test_11,smci_auto_test_12,smci_auto_test_13,smci_auto_test_14,smci_auto_test_15,smci_auto_test_16,smci_auto_test_init_crash,smci_auto_test_restartable,smci_auto_test_shutdown_crash,fsp_test_1,fsp_test_2,fsp_test_3,bintestapp64,tzecotestapp1,crypto_testapp,sst_testapp,autosst_testapp,auto_test_unpermitted,FD02C9DA-306C-48C7-A49C-BBD827AE86EF,5AF8C3E6-D9DF-446E-4FF2-D4D58E8CA49B,19CE19B9-FD73-4262-8553-E5CAC40C895A,C02CAC07-2639-4EF0-BC12-C4AF1FB3E276,15C6B6E4-D083-48E4-8744-4D90A8FF1EF2,CAD10542-34E4-452D-6156-E979AA6E61BC,23914957-C174-4EA6-54D1-DA820F77B4B0,5AF8C3E6-D9DF-446E-4FF2-C3C47D7B938A,CAD10542-34E4-452D-6156-E979AA6E6132,5AF8C3E6-D9DF-446E-4FF2-B2B36C6A8279,smplap32,smplap64;";
 		qcom,secdomain-ids = <52 9 10>;
 		qcom,primary-vm-index = <0>;
 		vm-attrs = "guest-ram-dump", "vpm-virq", "allow-unprotected";
@@ -401,6 +408,11 @@
 			346 346
 			406 406
 			407 407
+			/* PCIe0 INTx */
+			466 466
+			467 467
+			470 470
+			471 471
 			/* EMAC1 CH4 GIC IRQ */
 			808 808
 			860 860
@@ -460,7 +472,7 @@
 
 			virtio-mmio@0 {
 				vdevice-type = "virtio-mmio";
-				generate = "/virtio-mmio";
+				patch = "/virtio_blk_la_gvminfo";
 				peer-default;
 				vqs-num = <0x1>;
 				push-compatible = "virtio,mmio";
@@ -1335,6 +1347,13 @@
 			<GIC_SPI 374 IRQ_TYPE_LEVEL_HIGH>,
 			<GIC_SPI 375 IRQ_TYPE_LEVEL_HIGH>;
 
+		#interrupt-cells = <1>;
+		interrupt-map-mask = <0 0 0 0x7>;
+		interrupt-map = <0 0 0 1 &intc 0 0 GIC_SPI 434 IRQ_TYPE_LEVEL_HIGH>, //INTa
+				<0 0 0 2 &intc 0 0 GIC_SPI 435 IRQ_TYPE_LEVEL_HIGH>, //INTb
+				<0 0 0 3 &intc 0 0 GIC_SPI 438 IRQ_TYPE_LEVEL_HIGH>, //INTc
+				<0 0 0 4 &intc 0 0 GIC_SPI 439 IRQ_TYPE_LEVEL_HIGH>; //INTd
+
 		iommus = <&pcie_smmu 0x00 0x7f>;
 		iommu-map = <0x0 &pcie_smmu 0x0000 0x1>,
 			<0x100 &pcie_smmu 0x0001 0x1>;
@@ -1412,6 +1431,11 @@
 			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>,
 			     <GIC_PPI 12 (GIC_CPU_MASK_SIMPLE(8) | IRQ_TYPE_LEVEL_LOW)>;
 		clock-frequency = <19200000>;
+	};
+
+	cpu_pmu: cpu-pmu {
+		compatible = "arm,armv8-pmuv3";
+		interrupts = <GIC_PPI 7 IRQ_TYPE_LEVEL_HIGH>;
 	};
 
 	qcom_dma_heaps: qcom,dma-heaps {
@@ -1620,7 +1644,7 @@
 
 	ptp_virtual {
 		compatible = "qcom,ptp_virtual";
-		reg = <0xac5fe000 0x1000>,
+		reg = <0xac5ff000 0x1000>,
 			<0x23047000 0x1000>,
 			<0x17c23000 0x1000>;
 		reg-names = "ptp_carveout_mem",
@@ -1732,7 +1756,27 @@
 #include "lemans-vm-usb.dtsi"
 
 /delete-node/ &qupv3_0;
-/delete-node/ &qupv3_1;
+&qupv3_1 {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	compatible = "qcom,sa8255p-geni-se-qup";
+	reg = <0xac0000 0x1000>;
+	iommus = <&apps_smmu 0x458 0x0>;
+	qcom,iommu-dma = "bypass";
+	status = "ok";
+};
+
+&qupv3_se11_i2c {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ interconnects;
+	/delete-property/ interconnect-names;
+	compatible = "qcom,sa8255p-geni-i2c";
+	reg = <0xa90000 0x3000>;
+	clock-frequency = <400000>;
+	power-domains = <&scmi_power 10>;
+	status = "disabled";
+};
 
 &qupv3_2 {
 	/delete-property/ clocks;
@@ -1742,6 +1786,20 @@
 	iommus = <&apps_smmu 0x5b8 0x0>;
 	qcom,iommu-dma = "default";
 	status = "ok";
+};
+
+&qupv3_se16_spi {
+	/delete-property/ clocks;
+	/delete-property/ clock-names;
+	/delete-property/ interconnects;
+	/delete-property/ interconnect-names;
+	/delete-property/ spi-max-frequency;
+	compatible = "qcom,sa8255p-geni-spi";
+	reg = <0x888000 0x3000>;
+
+	power-domains = <&scmi_power 11>, <&scmi_perf 1>;
+	power-domain-names = "power", "perf";
+	status = "disabled";
 };
 
 &qupv3_se17_4uart {

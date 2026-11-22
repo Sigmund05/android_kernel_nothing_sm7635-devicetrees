@@ -1,0 +1,8 @@
+#include "neo_luna-v2.dtsi"
+#include "neo-aliso-regulators.dtsi"
+#include "neo-aliso-hlos-vm.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. NEO LUNA-ALISO";
+	qcom,msm-id = <740 0x10000>;
+};

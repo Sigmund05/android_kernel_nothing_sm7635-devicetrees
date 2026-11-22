@@ -97,6 +97,10 @@
 		qcom,no-aux-clk-sync;
 };
 
+&pcie_crm {
+	status = "disabled";
+};
+
 &SILVER_OFF {
 	status = "disabled";
 };

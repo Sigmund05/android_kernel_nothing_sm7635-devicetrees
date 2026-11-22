@@ -38,6 +38,7 @@
 
 		qcom,host-poweroff-in-pm-suspend;
 		qcom,disable-host-ssphy-powerdown;
+		qcom,disable-wakeup;
 
 		/*
 		 * Establish dependency on smmu driver so that depopulate path of
@@ -52,6 +53,7 @@
 			iommus = <&apps_smmu 0x080 0x0>;
 			qcom,iommu-dma = "atomic";
 			qcom,iommu-dma-addr-pool = <0x90000000 0x60000000>;
+			dma-coherent;
 			interrupts = <GIC_SPI 292 IRQ_TYPE_LEVEL_HIGH>;
 			usb-phy = <&usb2_phy0>, <&usb_qmp_phy0>;
 			snps,disable-clk-gating;
@@ -258,6 +260,7 @@
 
 		qcom,host-poweroff-in-pm-suspend;
 		qcom,default-mode-host;
+		qcom,disable-wakeup;
 
 		/*
 		 * Establish dependency on smmu driver so that depopulate path of
@@ -272,6 +275,7 @@
 			iommus = <&apps_smmu 0x020 0x0>;
 			qcom,iommu-dma = "atomic";
 			qcom,iommu-dma-addr-pool = <0x90000000 0x60000000>;
+			dma-coherent;
 			interrupts = <GIC_SPI 442 IRQ_TYPE_LEVEL_HIGH>;
 			usb-phy = <&usb2_phy2>, <&usb_nop_phy>;
 			snps,disable-clk-gating;

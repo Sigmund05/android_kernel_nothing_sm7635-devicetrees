@@ -54,7 +54,9 @@
 			compatible = "snps,dwc3";
 			reg = <0xa600000 0xd93c>;
 			iommus = <&apps_smmu 0x080 0x0>;
-			qcom,iommu-dma = "bypass";
+			qcom,iommu-dma = "atomic";
+			qcom,iommu-dma-addr-pool = <0x90000000 0x60000000>;
+			dma-coherent;
 			interrupts = <GIC_SPI 292 IRQ_TYPE_LEVEL_HIGH>;
 			usb-phy = <&usb2_phy0>, <&usb_qmp_phy0>;
 			snps,disable-clk-gating;
@@ -64,6 +66,7 @@
 			snps,usb2-gadget-lpm-disable;
 			snps,dis-u1-entry-quirk;
 			snps,dis-u2-entry-quirk;
+			snps,dis_u3_susphy_quirk;
 			snps,ssp-u3-u0-quirk;
 			tx-fifo-resize;
 			maximum-speed = "super-speed-plus";
@@ -288,7 +291,9 @@
 			reg = <0xa800000 0xd93c>;
 			interrupts = <GIC_SPI 349 IRQ_TYPE_LEVEL_HIGH>;
 			iommus = <&apps_smmu 0x0A0 0x0>;
-			qcom,iommu-dma = "bypass";
+			qcom,iommu-dma = "atomic";
+			qcom,iommu-dma-addr-pool = <0x90000000 0x60000000>;
+			dma-coherent;
 			usb-phy = <&usb2_phy1>, <&usb_qmp_phy1>;
 			snps,disable-clk-gating;
 			snps,has-lpm-erratum;
@@ -298,6 +303,7 @@
 			snps,usb2-gadget-lpm-disable;
 			snps,dis-u1-entry-quirk;
 			snps,dis-u2-entry-quirk;
+			snps,dis_u3_susphy_quirk;
 			tx-fifo-resize;
 			maximum-speed = "super-speed-plus";
 			dr_mode = "otg";
@@ -517,13 +523,16 @@
 			compatible = "snps,dwc3";
 			reg = <0xa400000 0xd800>;
 			iommus = <&apps_smmu 0x020 0x0>;
-			qcom,iommu-dma = "bypass";
+			qcom,iommu-dma = "atomic";
+			qcom,iommu-dma-addr-pool = <0x90000000 0x60000000>;
+			dma-coherent;
 			interrupts = <GIC_SPI 442 IRQ_TYPE_LEVEL_HIGH>;
 			usb-phy = <&usb2_phy2>, <&usb_nop_phy>;
 			snps,disable-clk-gating;
 			snps,has-lpm-erratum;
 			snps,hird-threshold = /bits/ 8 <0x0>;
 			snps,is-utmi-l1-suspend;
+			snps,dis_u3_susphy_quirk;
 			snps,usb2-gadget-lpm-disable;
 			maximum-speed = "high-speed";
 			dr_mode = "otg";

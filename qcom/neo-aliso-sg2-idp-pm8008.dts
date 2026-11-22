@@ -1,0 +1,10 @@
+/dts-v1/;
+
+#include "neo-aliso-sg2.dtsi"
+#include "neo-aliso-sg2-idp-pm8008.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc.neo-aliso-sg2-idp-pm8008 SINGLE Display and 12MP CAMERA SUPPORT";
+	compatible = "qcom,neo-idp", "qcom,neo", "qcom,idp";
+	qcom,board-id = <34 3>;
+};

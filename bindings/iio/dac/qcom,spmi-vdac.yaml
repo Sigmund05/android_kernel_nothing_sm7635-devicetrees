@@ -1,0 +1,63 @@
+%YAML 1.2
+---
+$id: http://devicetree.org/schemas/iio/dac/qcom,spmi-vdac.yaml#
+$schema: http://devicetree.org/meta-schemas/core.yaml#
+
+title: Qualcomm PMIC VDAC
+
+maintainers:
+  - Dhruvin Rajpura <drajpura@qti.qualcomm.com>
+
+description:
+  PMIC VDAC Peripheral to set voltage to VDAC and read back from VADC channels.
+
+properties:
+  compatible:
+    - const: qcom,spmi-vdac
+
+  reg:
+    maxItems: 1
+
+  io-channels:
+    items:
+      - description: ADC channel, which reports chip die temperature
+
+  io-channel-names:
+    items:
+      - const: thermal
+
+allOf:
+  - $ref: /schemas/nvmem/nvmem-consumer.yaml#/properties
+    properties:
+      nvmem-cell-names:
+        items:
+          - const: vdac_misc
+
+required:
+  - compatible
+  - reg
+  - nvmem-cells-names
+
+dependencies:
+  allOf:
+    - $ref: /schemas/nvmem/nvmem-consumer.yaml#/dependencies
+
+additionalProperties: false
+
+examples:
+  - |
+    pmic {
+      #address-cells = <1>;
+      #size-cells = <0>;
+
+      vdac@9600 {
+        compatible = "qcom,spmi-vdac";
+        reg = <0x9600>;
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        nvmem-cells = <&vdac_misc>;
+        nvmem-cell-names = "vdac_misc";
+      };
+    };
+...

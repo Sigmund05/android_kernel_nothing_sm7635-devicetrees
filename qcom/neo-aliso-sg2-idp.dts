@@ -1,6 +1,6 @@
 /dts-v1/;
 
-#include "neo_luna-v2.dtsi"
+#include "neo-aliso-sg2.dtsi"
 #include "neo-aliso-sg2-idp.dtsi"
 
 / {

@@ -10,7 +10,7 @@
 	interrupt-parent = <&vgic>;
 
 	chosen {
-		bootargs = "nokaslr log_buf_len=256K console=hvc0 loglevel=8";
+		bootargs = "nokaslr log_buf_len=256K console=hvc0 loglevel=8 memhp_default_state=online_movable memory_hotplug.memmap_on_memory=1 rcupdate.rcu_expedited=1 rcu_nocbs=0-1 fw_devlink.strict=1 stack_depot_disable=on";
 	};
 
 	cpus {
@@ -109,7 +109,7 @@
 
 		iomemory-ranges = <0x0 0x405000 0x0 0x405000 0x0 0x1000 0x0>;
 
-		vm-attrs = "crash-fatal", "context-dump";
+		vm-attrs = "crash-restart", "context-dump";
 
 		memory {
 			#address-cells = <0x2>;
@@ -315,7 +315,7 @@
 	};
 
 	firmware: firmware {
-		scm {
+		qcom_scm: scm {
 			compatible = "qcom,scm";
 		};
 	};
@@ -425,6 +425,15 @@
 		};
 	};
 
+	virtio_mem_device {
+		compatible = "qcom,virtio-mem";
+		depends-on-supply = <&mem_buf_msgq>;
+		/* Must be memory_block_size_bytes() aligned */
+		qcom,max-size = <0x0 0x20000000>;
+		qcom,ipa-range = <0x0 0x0 0xf 0xffffffff>;
+		qcom,block-size = <0x400000>;
+	};
+
 	qcom,test-dbl-tuivm {
 		compatible = "qcom,gh-dbl";
 		qcom,label = <0x4>;
@@ -486,11 +495,14 @@
 	qcom,mem-buf {
 		compatible = "qcom,mem-buf";
 		qcom,mem-buf-capabilities = "consumer";
+		qcom,ipa-range = <0x0 0x0 0xf 0xffffffff>;
+		qcom,dmabuf-ipa-size = <0x3 0xA0000000>; /* 14GB IPA space for dmabuf */
 		qcom,vmid = <45>;
 	};
 
-	qcom,mem-buf-msgq {
+	mem_buf_msgq: qcom,mem-buf-msgq {
 		compatible = "qcom,mem-buf-msgq";
+		qcom,msgq-names = "trusted_vm";
 	};
 
 	logbuf: qcom,logbuf-vendor-hooks {

@@ -1,6 +1,6 @@
 /dts-v1/;
 
-#include "neo_la.dtsi"
+#include "neo-aliso-sg.dtsi"
 #include "neo-aliso-sg-atp.dtsi"
 
 

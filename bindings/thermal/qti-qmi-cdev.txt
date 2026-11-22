@@ -114,6 +114,8 @@ Subsystem properties:
 			"mmw2_sub1_dsc" -> DSC based MMW sub1 cooling device2,
 			"mmw3_sub1_dsc" -> DSC based MMW sub1 cooling device3,
 			"mmw_ific_sub1_dsc" -> DSC based MMW IFIC sub1 cooling device.
+			"rfid_cycle_dsc" -> DSC based RFID cycle cooling device.
+			"rfid_txpower_dsc" -> DSC based RFID txpower cooling device.
 
 	-#cooling-cells:
 		Usage: required

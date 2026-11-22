@@ -1,0 +1,11 @@
+/dts-v1/;
+
+#include "neo-aliso-sg.dtsi"
+#include "neo-aliso-sg-idp-pm8008.dtsi"
+
+
+/ {
+	model = "Qualcomm Technologies, Inc.neo-aliso-sg-idp-pm8008";
+	compatible = "qcom,neo-idp", "qcom,neo", "qcom,idp";
+	qcom,board-id = <34 3>;
+};

@@ -88,7 +88,10 @@ VOLCANO_BOARDS += \
 		volcano6i-mtp-moselle-emmc-overlay.dtbo \
 		volcano-qrd-overlay.dtbo \
 		volcano6i-qrd-moselle-overlay.dtbo \
-		volcano6i-mtp-STSafe320-brahma-overlay.dtbo
+		volcano6i-mtp-STSafe320-brahma-overlay.dtbo \
+		volcano6i-mtp-wcd9378-hsj-evros-overlay.dtbo \
+		volcano6i-mtp-wcd9395-aatc-evros-overlay.dtbo
+
 
 pineapple-dtb-$(CONFIG_ARCH_VOLCANO) += \
 	$(call add-overlays, $(VOLCANO_BOARDS) $(NOAPQ_VOLCANO_BOARDS),$(VOLCANO_BASE_DTB))\
@@ -127,12 +130,14 @@ NIOBE_BOARDS += \
 		niobe-idp-overlay.dtbo \
 		niobe-idp-dpu-overlay.dtbo \
 		niobe-idp-edp-overlay.dtbo \
+		niobe-idp-edp-dual-dpu-overlay.dtbo \
 		niobe-qxr-overlay.dtbo \
 		niobep-atp-overlay.dtbo \
 		niobep-idp-overlay.dtbo \
 		niobep-idp-dpu-overlay.dtbo \
 		niobep-idp-ihv-overlay.dtbo \
 		niobep-idp-edp-overlay.dtbo \
+		niobep-idp-edp-dual-dpu-overlay.dtbo\
 		niobep-qxr-overlay.dtbo \
 		niobep-qxr-vista-overlay.dtbo \
 		niobep-qxr-vista-v2-overlay.dtbo
@@ -167,6 +172,8 @@ dtb-y += $(neo-dtb-y)
 ### Added for Neo ###
 NEO_LA_BASE_DTB += neo_la.dtb
 NEO_LUNA_DTB += neo_luna-v2.dtb
+NEO_ALISO += neo-aliso-sg.dtb
+NEO_LUNA_ALISO += neo-aliso-sg2.dtb
 
 NEO_BOARDS += \
 		neo_la-rumi-overlay.dtbo \
@@ -176,19 +183,25 @@ NEO_BOARDS += \
 		neo_luna-v2-sg-idp-dual-display-overlay.dtbo \
 		neo_luna-v2-sg-idp-overlay.dtbo \
 		neo_luna-v2-sg-idp-pm8008-overlay.dtbo \
-		neo_luna-v2-sg-qar-overlay.dtbo \
+		neo_luna-v2-sg-qar-overlay.dtbo
+
+NEO_ALISO_BOARDS += \
 		neo-aliso-sg2-idp-overlay.dtbo \
 		neo-aliso-sg2-qar-overlay.dtbo \
 		neo-aliso-sg2-atp-overlay.dtbo \
-		neo-aliso-sg-atp-overlay.dtbo\
-		neo-aliso-sg-idp-overlay.dtbo
-
+		neo-aliso-sg2-idp-pm8008-overlay.dtbo \
+		neo-aliso-sg-atp-overlay.dtbo \
+		neo-aliso-sg-idp-overlay.dtbo \
+		neo-aliso-sg-idp-pm8008-overlay.dtbo
 
 neo-dtb-$(CONFIG_ARCH_NEO) += \
 	$(call add-overlays, $(NEO_BOARDS) ,$(NEO_LA_BASE_DTB)) \
-	$(call add-overlays, $(NEO_BOARDS) ,$(NEO_LUNA_DTB))
+	$(call add-overlays, $(NEO_BOARDS) ,$(NEO_LUNA_DTB)) \
+	$(call add-overlays, $(NEO_ALISO_BOARDS) ,$(NEO_LUNA_ALISO)) \
+	$(call add-overlays, $(NEO_ALISO_BOARDS) ,$(NEO_ALISO))
 
-neo-overlays-dtb-$(CONFIG_ARCH_NEO) += $(NEO_BOARDS) $(NEO_LA_BASE_DTB) $(NEO_LUNA_DTB)
+neo-overlays-dtb-$(CONFIG_ARCH_NEO) += $(NEO_BOARDS) $(NEO_LA_BASE_DTB) $(NEO_LUNA_DTB) \
+$(NEO_LUNA_ALISO) $(NEO_ALISO)
 dtb-y += $(neo-dtb-y)
 
 SERAPH_BASE_DTB += seraph.dtb
@@ -386,6 +399,18 @@ seraph_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += seraph-vm-rumi.dtb \
 				seraphp-vm-idp-no-display-no-gpu.dtb
 
 dtb-y += $(seraph_tuivm-dtb-y)
+endif
+endif
+
+ifeq ($(CONFIG_ARCH_NEO), y)
+ifeq ($(CONFIG_ARCH_QTI_VM), y)
+neo_tuivm-dtb-$(CONFIG_ARCH_QTI_VM) += neo-aliso-sg-vm-atp.dtb \
+				neo-aliso-sg-vm-idp.dtb \
+				neo-aliso-sg2-vm-atp.dtb \
+				neo-aliso-sg2-vm-idp.dtb \
+				neo-aliso-sg2-vm-qar.dtb
+
+dtb-y += $(neo_tuivm-dtb-y)
 endif
 endif
 
@@ -656,12 +681,17 @@ autoghgvm-overlays-dtb-$(CONFIG_ARCH_QTI_VM) += \
 	$(LEMANS_GH_LA_GVM_VP_BOARDS) $(LEMANS_GH_LA_GVM_VP_BASE_DTB) \
 	$(LEMANS_GH_LA_GVM_COB_BOARDS) $(LEMANS_GH_LA_GVM_COB_BASE_DTB)
 
+ifeq ($(QCVIRTIO), true)
+LEMANS_GH_LV_GVM_COB_BASE_DTB += lemans-gunyah-vm-lv-qcvirtio-cob.dtb
+LEMANS_GH_LV_GVM_QAM_BASE_DTB += lemans-gunyah-vm-lv-qcvirtio-qam.dtb
+LEMANS_GH_LV_GVM_FLEX_QAM_BASE_DTB += lemans-gunyah-vm-lv-qcvirtio-flex-qam.dtb
+else
 LEMANS_GH_LV_GVM_COB_BASE_DTB += lemans-gunyah-vm-lv-cob.dtb
 LEMANS_GH_LV_GVM_QAM_BASE_DTB += lemans-gunyah-vm-lv-qam.dtb
+LEMANS_GH_LV_GVM_FLEX_QAM_BASE_DTB += lemans-gunyah-vm-lv-flex-qam.dtb
+endif
 LEMANS_GH_LV_GVM_COB_BOARDS += lemans-gunyah-vm-lv-cob-overlay.dtbo
 LEMANS_GH_LV_GVM_QAM_BOARDS += lemans-gunyah-vm-lv-qam-overlay.dtbo
-
-LEMANS_GH_LV_GVM_FLEX_QAM_BASE_DTB += lemans-gunyah-vm-lv-flex-qam.dtb
 LEMANS_GH_LV_GVM_FLEX_QAM_BOARDS += lemans-gunyah-vm-lv-flex-qam-overlay.dtbo
 
 autoghgvm-dtb-$(CONFIG_ARCH_QTI_VM) += \

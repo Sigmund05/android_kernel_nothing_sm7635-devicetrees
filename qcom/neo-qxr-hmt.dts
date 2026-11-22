@@ -2,6 +2,7 @@
 
 #include "neo.dtsi"
 #include "neo-qxr-hmt.dtsi"
+#include "neo-pm8008.dtsi"
 
 / {
 	model = "Qualcomm Technologies, Inc. NEO QXR HMT";

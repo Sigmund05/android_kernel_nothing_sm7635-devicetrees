@@ -1,0 +1,19 @@
+#include <dt-bindings/gpio/gpio.h>
+
+&soc {
+	ufshc2_mem: ufshc2@1da4000 {
+		compatible = "qcom,sa8255p-ufshc", "qcom,ufshc";
+		reg = <0x1da4000 0x3000>;
+		reg-names = "ufs_mem";
+		interrupts = <GIC_SPI 125 IRQ_TYPE_LEVEL_HIGH>;
+		lanes-per-direction = <2>;
+		iommus = <&apps_smmu 0x420 0x0>;
+		qcom,iommu-dma = "fastmap";
+		dma-coherent;
+		reset-gpios = <&tlmm 150 GPIO_ACTIVE_LOW>;
+		power-domains = <&scmi_power 0>;
+		set-ds-spm-level;
+
+		status = "disabled";
+	};
+};

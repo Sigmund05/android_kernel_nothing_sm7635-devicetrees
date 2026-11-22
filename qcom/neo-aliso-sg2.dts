@@ -1,0 +1,15 @@
+/dts-v1/;
+
+#include "neo-aliso-sg2.dtsi"
+
+&apps_rsc_drv2 {
+	rpmh-regulator-gfxlvl {
+		status = "okay";
+	};
+};
+
+/ {
+	model = "Qualcomm Technologies, Inc. NEO LUNA-V2 SoC";
+	compatible = "qcom,neo";
+	qcom,board-id = <0 0>;
+};

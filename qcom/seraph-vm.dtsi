@@ -485,7 +485,7 @@
 		qti,cb-id = <QTI_SMMU_PROXY_CAMERA_CB>;
 		qcom,iommu-defer-smr-config;
 		iommus = <&apps_smmu 0x1841 0x20>,
-			 <&apps_smmu 0x1821 0xA0>,
+			 <&apps_smmu 0x1801 0xA0>,
 			 <&apps_smmu 0x1902 0x0>,
 			 <&apps_smmu 0x1921 0x0>,
 			 <&apps_smmu 0x0801 0x0>,

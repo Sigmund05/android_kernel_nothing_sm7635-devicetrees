@@ -176,6 +176,16 @@
 				qcom,qmi-dev-name = "modem_bw_backoff";
 				#cooling-cells = <2>;
 			};
+
+			rfid_cycle_dsc: rfid_cycle_dsc {
+				qcom,qmi-dev-name = "rfid_cycle_dsc";
+				#cooling-cells = <2>;
+			};
+
+			rfid_txpower_dsc: rfid_txpower_dsc {
+				qcom,qmi-dev-name = "rfid_txpower_dsc";
+				#cooling-cells = <2>;
+			};
 		};
 	};
 

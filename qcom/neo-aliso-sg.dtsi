@@ -1,0 +1,8 @@
+#include "neo_la.dtsi"
+#include "neo-aliso-regulators.dtsi"
+#include "neo-aliso-hlos-vm.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. NEO-ALISO-SG";
+	qcom,msm-id = <739 0x10000>;
+};

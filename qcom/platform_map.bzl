@@ -245,6 +245,8 @@ _platform_map = {
         "dtb_list": [
             {"name": "neo_la.dtb"},
             {"name": "neo_luna-v2.dtb"},
+            {"name": "neo-aliso-sg.dtb"},
+            {"name": "neo-aliso-sg2.dtb"},
         ],
         "dtbo_list": [
             {"name": "neo_la-rumi-overlay.dtbo"},
@@ -258,8 +260,10 @@ _platform_map = {
             {"name": "neo-aliso-sg2-idp-overlay.dtbo"},
             {"name": "neo-aliso-sg2-qar-overlay.dtbo"},
             {"name": "neo-aliso-sg2-atp-overlay.dtbo"},
+            {"name": "neo-aliso-sg2-idp-pm8008-overlay.dtbo"},
             {"name": "neo-aliso-sg-atp-overlay.dtbo"},
             {"name": "neo-aliso-sg-idp-overlay.dtbo"},
+            {"name": "neo-aliso-sg-idp-pm8008-overlay.dtbo"},
         ],
     },
     "neo": {
@@ -315,12 +319,14 @@ _platform_map = {
             {"name": "niobe-idp-overlay.dtbo"},
             {"name": "niobe-idp-dpu-overlay.dtbo"},
             {"name": "niobe-idp-edp-overlay.dtbo"},
+            {"name": "niobe-idp-edp-dual-dpu-overlay.dtbo"},
             {"name": "niobe-qxr-overlay.dtbo"},
             {"name": "niobep-atp-overlay.dtbo"},
             {"name": "niobep-idp-overlay.dtbo"},
             {"name": "niobep-idp-dpu-overlay.dtbo"},
             {"name": "niobep-idp-ihv-overlay.dtbo"},
             {"name": "niobep-idp-edp-overlay.dtbo"},
+            {"name": "niobep-idp-edp-dual-dpu-overlay.dtbo"},
             {"name": "niobep-qxr-overlay.dtbo"},
             {"name": "niobep-qxr-vista-overlay.dtbo"},
             {"name": "niobep-qxr-vista-v2-overlay.dtbo"},
@@ -435,6 +441,15 @@ _platform_map = {
             {"name": "seraph-vm-idp-no-display-no-gpu.dtb"},
             {"name": "seraphp-vm-idp-no-display.dtb"},
             {"name": "seraphp-vm-idp-no-display-no-gpu.dtb"},
+        ],
+    },
+    "neo-tuivm": {
+        "dtb_list": [
+            {"name": "neo-aliso-sg-vm-atp.dtb"},
+            {"name": "neo-aliso-sg-vm-idp.dtb"},
+            {"name": "neo-aliso-sg2-vm-atp.dtb"},
+            {"name": "neo-aliso-sg2-vm-idp.dtb"},
+            {"name": "neo-aliso-sg2-vm-qar.dtb"},
         ],
     },
     "cliffs-tuivm": {
@@ -708,6 +723,8 @@ _platform_map = {
             {"name": "volcano-qrd-overlay.dtbo"},
             {"name": "volcano6i-qrd-moselle-overlay.dtbo"},
             {"name": "volcano6i-mtp-STSafe320-brahma-overlay.dtbo"},
+            {"name": "volcano6i-mtp-wcd9378-hsj-evros-overlay.dtbo"},
+            {"name": "volcano6i-mtp-wcd9395-aatc-evros-overlay.dtbo"},
         ],
     },
 }

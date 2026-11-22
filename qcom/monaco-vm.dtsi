@@ -258,6 +258,8 @@
 					&hgsl_tcsr_receiver1
 					&hgsl_tcsr_receiver2
 					&hgsl_tcsr_receiver3>;
+		default_iocoherency;
+		writecombine_enable;
 	};
 
 	pdc: interrupt-controller@b220000 {
@@ -522,16 +524,6 @@
 		#clock-cells = <0>;
 	};
 
-	ptp_virtual {
-		compatible = "qcom,ptp_virtual";
-		reg = <0xeb600000 0x1000>,
-			<0x23047000 0x1000>,
-			<0x17c23000 0x1000>;
-		reg-names = "ptp_carveout_mem",
-			"ptp_reg",
-			"qtimer_reg";
-	};
-
 	qcom_rng_ee3: qrng@10d3000 {
 		compatible = "qcom,msm-rng";
 		reg = <0x10d3000 0x1000>;
@@ -684,7 +676,7 @@
 		usb20_vbus_boost_default: usb20_vbus_boost_default {
 			pins = "gpio9";
 			function = "normal";
-			output-low;
+			output-high;
 			power-source = <0>;
 		};
 	};
@@ -695,7 +687,7 @@
 		usb22_vbus_boost_default: usb22_vbus_boost_default {
 			pins = "gpio7";
 			function = "normal";
-			output-low;
+			output-high;
 			power-source = <0>;
 		};
 	};
@@ -706,6 +698,7 @@
 		compatible = "regulator-fixed";
 		regulator-name = "usb0_vbus_boost_vregulator";
 		enable-active-high;
+		regulator-always-on;
 		gpios = <&pm8775_1_gpios 9 0>;
 
 		pinctrl-names = "default";
@@ -716,6 +709,7 @@
 		compatible = "regulator-fixed";
 		regulator-name = "usb2_vbus_boost_vregulator";
 		enable-active-high;
+		regulator-always-on;
 		gpios = <&pm8775_2_gpios 7 0>;
 
 		pinctrl-names = "default";

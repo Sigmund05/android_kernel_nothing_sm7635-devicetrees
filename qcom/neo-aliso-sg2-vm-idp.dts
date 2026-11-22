@@ -1,0 +1,9 @@
+/dts-v1/;
+
+#include "neo-aliso-sg2-vm.dtsi"
+
+/ {
+	model = "Qualcomm Technologies, Inc. NEO ALISO SG2 IDP Display and GPU";
+	compatible = "qcom,neo-idp", "qcom,neo", "qcom,idp";
+	qcom,board-id = <34 0>;
+};

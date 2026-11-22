@@ -2,7 +2,7 @@
 	/* QUPv3_0  wrapper  instance */
 	qupv3_0: qcom,qupv3_0_geni_se@9c0000 {
 		compatible = "qcom,geni-se-qup";
-		reg = <0x9c0000 0x1000>;
+		reg = <0x9c0000 0x2000>;
 		#address-cells = <1>;
 		#size-cells = <1>;
 		ranges;
@@ -88,7 +88,7 @@
 	/* QUPv3_1  wrapper  instance */
 	qupv3_1: qcom,qupv3_1_geni_se@ac0000 {
 		compatible = "qcom,geni-se-qup";
-		reg = <0xac0000 0x6000>;
+		reg = <0xac0000 0x2000>;
 		#address-cells = <1>;
 		#size-cells = <1>;
 		ranges;
@@ -134,7 +134,7 @@
 	/* QUPv3_2  wrapper  instance */
 	qupv3_2: qcom,qupv3_2_geni_se@8c0000 {
 		compatible = "qcom,geni-se-qup";
-		reg = <0x8c0000 0x6000>;
+		reg = <0x8c0000 0x2000>;
 		#address-cells = <1>;
 		#size-cells = <1>;
 		ranges;
@@ -217,7 +217,7 @@
 	/* QUPv3_3  wrapper  instance */
 	qupv3_3: qcom,qupv3_3_geni_se@bc0000 {
 		compatible = "qcom,geni-se-qup";
-		reg = <0xbc0000 0x6000>;
+		reg = <0xbc0000 0x2000>;
 		#address-cells = <1>;
 		#size-cells = <1>;
 		ranges;

@@ -1,0 +1,15 @@
+/dts-v1/;
+
+#include "neo-aliso-sg.dtsi"
+
+&apps_rsc_drv2 {
+	rpmh-regulator-smpa9 {
+		status = "okay";
+	};
+};
+
+/ {
+	model = "Qualcomm Technologies, Inc. NEO ALISO SG SoC";
+	compatible = "qcom,neo";
+	qcom,board-id = <0 0>;
+};

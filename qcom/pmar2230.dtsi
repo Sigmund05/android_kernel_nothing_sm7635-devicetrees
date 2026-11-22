@@ -124,6 +124,24 @@
 			interrupt-names = "usb_vbus";
 		};
 
+		sdam@900 {
+			compatible = "qcom,spmi-sdam";
+			reg = <0x900>;
+			#address-cells = <1>;
+			#size-cells = <1>;
+		};
+
+		pmar2230_vdac: vdac@9600 {
+			compatible = "qcom,spmi-vdac";
+			reg = <0x9600>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			io-channels = <&pmar2230_vadc PMAR2230_ADC5_GEN4_ATEST1>,
+				      <&pmar2230_vadc PMAR2230_ADC5_GEN4_ATEST2>;
+			io-channel-names = "ATEST1",
+					   "ATEST2";
+		};
+
 		pmar2230_vadc: vadc@7900 {
 			compatible = "qcom,spmi-adc5-gen4";
 			reg = <0x7900>;
@@ -158,6 +176,18 @@
 				reg = <PMAR2230_ADC5_GEN4_VPH_PWR>;
 				label = "pm2230_vph_pwr";
 				qcom,pre-scaling = <1 3>;
+			};
+
+			pmar2230_atest1 {
+				reg = <PMAR2230_ADC5_GEN4_ATEST1>;
+				label = "pmar2230_atest1";
+				qcom,pre-scaling = <1 1>;
+			};
+
+			pmar2230_atest2 {
+				reg = <PMAR2230_ADC5_GEN4_ATEST2>;
+				label = "pmar2230_atest2";
+				qcom,pre-scaling = <1 1>;
 			};
 
 			pmar2230_soc_therm {

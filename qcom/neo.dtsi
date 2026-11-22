@@ -25,7 +25,7 @@
 	#size-cells = <2>;
 
 	chosen: chosen {
-		bootargs = " rcupdate.rcu_expedited=1 rcu_nocbs=0-7 kpti=off log_buf_len=256K pcie_ports=compat loglevel=6 cpufreq.default_governor=performance swiotlb=noforce cgroup.memory=nokmem,nosocket allow_file_spec_access msm_rtb.filter=0x237 disable_dma32=on ftrace_dump_on_oops net.ifnames=0";
+		bootargs = " hibernate=nocompress rcupdate.rcu_expedited=1 rcu_nocbs=0-7 kpti=off log_buf_len=256K pcie_ports=compat loglevel=6 cpufreq.default_governor=performance swiotlb=noforce cgroup.memory=nokmem,nosocket allow_file_spec_access msm_rtb.filter=0x237 disable_dma32=on ftrace_dump_on_oops net.ifnames=0 earlycon earlycon=qcom_geni,0x00A94000 qcom_geni_serial.con_enabled=1 log_buf_len=256K  console=ttyMSM0,115200,n8 bootconfig earlycon=msm_geni_serial,0x00A94000 msm_geni_serial.con_enabled=1";
 	};
 
 	memory { device_type = "memory"; reg = <0 0 0 0>; };
@@ -843,8 +843,8 @@
 
 		opp-384000000 {
 			opp-hz = /bits/ 64 <384000000>;
-			opp-peak-kBps = <500000 200000>;
-			opp-avg-kBps = <104000 0>;
+			opp-peak-kBps = <2500000 1000000>;
+			opp-avg-kBps = <400000 0>;
 		};
 	};
 
@@ -1642,6 +1642,11 @@
 		priority = <0>;
 		mbox-desc-offset = <0x0>;
 		#mbox-cells = <1>;
+	};
+
+	show_resume_irqs@17100000 {
+		compatible = "qcom,show-resume-irqs";
+		reg = <0x17100000 0x290000>;
 	};
 
 	qcom,msm-cdsp-loader {

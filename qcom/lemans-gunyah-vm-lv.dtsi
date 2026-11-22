@@ -299,6 +299,8 @@
 			0x0 0x98c000 0x0 0x98c000 0x0 0x3000 0x0
 			/* QUPv3 SE0 region */
 			0x0 0x980000 0x0 0x980000 0x0 0x3000 0x0
+			/* 2nd UFS iomemory region */
+			0x0 0x1DA4000 0x0 0x1DA4000 0x0 0x3000 0x0
 		>;
 
 		/* Pass through IRQs */
@@ -309,6 +311,8 @@
 			562 562
 			/* QUPv3 SE0 GIC IRQ */
 			582 582
+			/* 2nd UFS IRQ  */
+			157 157
 		>;
 
 		memory {
@@ -1360,4 +1364,10 @@
 			remote-vmids = <0>;
 		};
 	};
+};
+
+#include "lemans-gunyah-vm-ufs.dtsi"
+
+&ufshc2_mem {
+	status = "ok";
 };

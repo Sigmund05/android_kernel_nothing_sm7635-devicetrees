@@ -11,6 +11,8 @@
 		#global-interrupts = <1>;
 		#size-cells = <1>;
 		#address-cells = <1>;
+		qcom,num-smr-override = <24>;
+		qcom,num-context-banks-override = <22>;
 		ranges;
 		dma-coherent;
 
@@ -118,6 +120,8 @@
 		#global-interrupts = <1>;
 		#size-cells = <1>;
 		#address-cells = <1>;
+		qcom,num-smr-override = <107>;
+		qcom,num-context-banks-override = <71>;
 		ranges;
 		dma-coherent;
 

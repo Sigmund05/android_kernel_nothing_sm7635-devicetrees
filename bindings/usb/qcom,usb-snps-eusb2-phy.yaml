@@ -72,6 +72,7 @@ properties:
     description: |
       phandle to eUSB2 repeater which is used with eUSB2 HSPHY for USB
       functionality.
+    $ref: /schemas/types.yaml#/definitions/phandle
 
   qcom,param-override-seq:
     description: parameter override sequence with value, reg offset pair
@@ -121,7 +122,6 @@ allOf:
         - qcom,vdd-voltage-level
         - resets
         - reset-names
-        - usb-repeater
 
 
 additionalProperties: false
