@@ -13,14 +13,14 @@
 #define ACD_LEVEL_LOW_SVS_D2  0xc82f5ffd
 
 &msm_gpu {
+	qcom,initial-pwrlevel = <11>;
+
 	/* Power levels */
 	qcom,gpu-pwrlevels {
 		#address-cells = <1>;
 		#size-cells = <0>;
 
 		qcom,sku-codes = <SKU_CODE(PCODE_UNKNOWN, FC_UNKNOWN)>;
-
-		qcom,initial-pwrlevel = <11>;
 
 		qcom,gpu-pwrlevel@0 {
 			reg = <0>;
