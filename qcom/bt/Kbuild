@@ -53,6 +53,7 @@ endif
 
 ifeq ($(CONFIG_ARCH_NEO),y)
 dtbo-y += neo_la-kiwi-bt.dtbo
+dtbo-y += neo-aliso-kiwi-bt.dtbo
 endif
 
 ifeq ($(CONFIG_ARCH_SERAPH),y)
