@@ -10,6 +10,10 @@ endif
 
 ifeq ($(CONFIG_TARGET), msm.neo_la)
 dtbo-$(CONFIG_ARCH_NEO) += display/neo-sde.dtbo \
+		display/neo-aliso-sde.dtbo \
+		display/neo-aliso-sg-sde-display-no-display-overlay.dtbo \
+		display/neo-aliso-sg2-sde-display-idp-overlay.dtbo \
+		display/neo-aliso-sg2-sde-display-qar-overlay.dtbo \
 		display/neo_la-sde-no-display-overlay.dtbo \
 		display/neo_luna-v2-sde-display-idp-overlay.dtbo \
 		display/neo_luna-v2-sde-display-sg-idp-overlay.dtbo \

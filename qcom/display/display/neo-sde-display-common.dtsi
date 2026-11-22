@@ -13,6 +13,8 @@
 #include "dsi-panel-sy049-dual-dsc-1080p-60hz-video.dtsi"
 #include "dsi-panel-sy049-dual-lm-dual-dsc-1080p-90hz-video.dtsi"
 #include "dsi-panel-sy049-quad-lm-dual-dsc-1080p-90hz-video.dtsi"
+#include "dsi-panel-sy103-wam18-dualmipi-2560x1280-60hz-video.dtsi"
+#include "dsi-panel-sy103-wam18-1280x720-60hz-video.dtsi"
 
 #include "neo-sde-display-pinctrl.dtsi"
 
@@ -294,6 +296,36 @@
 			qcom,mdss-dsi-panel-phy-timings = [00 18 06 06 15 20 06
 				06 07 02 04 00 15 0b];
 			qcom,display-topology = <2 0 2>;
+			qcom,default-topology-index = <0>;
+		};
+	};
+};
+
+&dsi_sy103_wam18_dual_2560x1280_60hz_video {
+	qcom,dsi-select-clocks = "pll_byte_clk0", "pll_dsi_clk0";
+	qcom,mdss-dsi-panel-status-check-mode = "esd_sw_sim_success";
+	qcom,esd-check-enabled;
+
+	qcom,mdss-dsi-display-timings {
+		timing@0 {
+			qcom,mdss-dsi-panel-phy-timings = [00 17 06 05 15 20 06
+				06 07 02 04 00 15 0b];
+			qcom,display-topology = <2 0 2>;
+			qcom,default-topology-index = <0>;
+		};
+	};
+};
+
+&dsi_sy103_wam18_1280x720_60hz_video {
+	qcom,dsi-select-clocks = "pll_byte_clk0", "pll_dsi_clk0";
+	qcom,mdss-dsi-panel-status-check-mode = "esd_sw_sim_success";
+	qcom,esd-check-enabled;
+
+	qcom,mdss-dsi-display-timings {
+		timing@0 {
+			qcom,mdss-dsi-panel-phy-timings = [00 10 03 03 11 1e 04
+				04 03 02 04 00 0e 09];
+			qcom,display-topology = <1 0 1>;
 			qcom,default-topology-index = <0>;
 		};
 	};

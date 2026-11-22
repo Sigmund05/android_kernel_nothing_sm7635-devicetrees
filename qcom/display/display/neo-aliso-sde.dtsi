@@ -1,0 +1,27 @@
+#include "neo-sde.dtsi"
+
+&mdss_dsi0 {
+	vdda-1p2-supply = <&L6A>;
+	qcom,ctrl-supply-entries {
+		qcom,ctrl-supply-entry@0 {
+			qcom,supply-max-voltage = <1200000>;
+		};
+	};
+};
+
+&mdss_dsi1 {
+	vdda-1p2-supply = <&L6A>;
+	qcom,ctrl-supply-entries {
+		qcom,ctrl-supply-entry@0 {
+			qcom,supply-max-voltage = <1200000>;
+		};
+	};
+};
+
+&mdss_dsi_phy0 {
+	vdda-0p9-supply = <&L9A>;
+};
+
+&mdss_dsi_phy1 {
+	vdda-0p9-supply = <&L9A>;
+};

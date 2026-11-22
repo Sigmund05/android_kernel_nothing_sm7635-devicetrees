@@ -1,5 +1,14 @@
 #include "volcano-sde-display-mtp.dtsi"
 
+&sde_dp {
+	status = "ok";
+	qcom,dp-aux-switch = <&fsa4480>;
+};
+
+&mdss_mdp {
+	connectors = <&sde_dsi &smmu_sde_unsec &sde_wb2 &sde_dp &sde_rscc>;
+};
+
 &display_panel_extdvdd {
 	/delete-property/ gpio;
 	/delete-property/ pinctrl-0;
