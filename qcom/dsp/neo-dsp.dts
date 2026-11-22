@@ -5,7 +5,7 @@
 
 / {
 	model = "Qualcomm Technologies, Inc. neo v1 SoC";
-	compatible = "qcom,neo";
+	compatible = "qcom,neo", "qcom,neo-atp", "qcom,atp", "qcom,neo-idp", "qcom,idp", "qcom,neo-qar", "qcom,qar";
 	qcom,board-id = <0 0>;
-	qcom,msm-id = <554 0x10000>, <579 0x10000>;
+	qcom,msm-id = <554 0x10000>, <579 0x10000>, <740 0x10000>, <739 0x10000>;
 };
